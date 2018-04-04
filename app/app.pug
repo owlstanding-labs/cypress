@@ -1,0 +1,15 @@
+app
+    h1
+        | Cypress
+    p
+        | A conceptual crypto-token information exchange demo
+    .item(each='{ items }')
+        img(src='{ url }')
+        | { name }
+    script.
+        const tag = this
+        tag.items = [
+            { name: 'a', url: './assets/artworks/art1.png', views: 123 },
+            { name: 'b', url: './assets/artworks/art2.png', views: 456 },
+            { name: 'c', url: './assets/artworks/art3.png', views: 789 }
+        ]

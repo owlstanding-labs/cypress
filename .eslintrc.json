@@ -1,0 +1,35 @@
+{
+    "env": {
+        "node": true,
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint-config-riot",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "plugins": [
+        "pug"
+    ],
+    "globals": {
+        "opts": true
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ]
+    }
+}
