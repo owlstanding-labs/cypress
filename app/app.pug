@@ -3,10 +3,11 @@ app
     .item(each='{ items }')
         img(src='{ url }')
         | { name }
+    button(onclick='{ cool(w3) }') click
     script.
+        import './app-hero'
+        import { w3cli, items, cool } from './_app'
         const tag = this
-        tag.items = [
-            { name: 'a', url: './assets/artworks/art1.png', views: 123 },
-            { name: 'b', url: './assets/artworks/art2.png', views: 456 },
-            { name: 'c', url: './assets/artworks/art3.png', views: 789 }
-        ]
+        tag.items = items
+        tag.cool = cool
+        tag.w3 = w3cli
