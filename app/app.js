@@ -3,12 +3,6 @@ import { givenProvider } from 'web3'
 
 export var w3cli = new Web3(givenProvider || 'ws://localhost:8546')
 
-export function cool(w) {
-    return () => {
-        console.log(w)
-    }
-}
-
 export var items = [{
     name: 'a',
     url: './assets/artworks/art1.png',
@@ -22,3 +16,11 @@ export var items = [{
     url: './assets/artworks/art3.png',
     views: 789
 }]
+
+export function showMod(name) {
+    return () => {
+        this.mod.visible = name
+        this.update()
+        console.log('yo show mod', name, this)
+    }
+}
