@@ -1,0 +1,20 @@
+modal(class='{ visible: modal.visible }')
+    .overlay(if='{ modal.visible }', onclick='{ close }')
+    .container(if='{ modal.visible }')
+        //- header.modal-header
+        //-     button.close(onclick='{ close }')
+        //-         | ×
+        .modal-body
+            //- yield
+            | By click `Proceed` this will charge you 1 eth to see the content
+        footer.modal-footer
+            button.ok(onclick='{ ok }')
+                | Proceed
+            button.cancel(onclick='{ close }')
+                | Cancel
+    script.
+        import { reset, close } from './modal'
+        const tag = this
+        tag.modal = opts.modal
+        tag.on('mount', reset.bind(tag, tag.opts))
+        tag.close = close.bind(tag)
