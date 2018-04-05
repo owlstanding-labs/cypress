@@ -1,0 +1,1 @@
+import './app-hero.pug'
