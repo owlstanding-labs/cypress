@@ -1,26 +1,16 @@
-import Web3 from 'web3'
-import { givenProvider } from 'web3'
+import { artworks } from './shared'
 
-export var w3cli = new Web3(givenProvider || 'ws://localhost:8546')
-
-export var items = [{
-    name: 'a',
-    url: '/cypress/assets/artworks/art1.png',
-    views: 123
-}, {
-    name: 'b',
-    url: '/cypress/assets/artworks/art2.png',
-    views: 456
-}, {
-    name: 'c',
-    url: '/cypress/assets/artworks/art3.png',
-    views: 789
-}]
-
-export function showMod(name) {
+export function showMod(item) {
     return () => {
-        this.mod.visible = name
-        this.update()
-        console.log('yo show mod', name, this)
+        this.refs.mod.show(item)
+        // this.update()
+    }
+}
+
+export class App {
+    constructor(tag) {
+        tag.mod = {}
+        tag.items = artworks
+        tag.showMod = showMod.bind(tag)
     }
 }

@@ -1,20 +1,26 @@
-modal(class='{ visible: modal.visible }')
-    .overlay(if='{ modal.visible }', onclick='{ close }')
-    .container(if='{ modal.visible }')
+modal(class='{ visible: visible }')
+    .overlay(if='{ visible }', onclick='{ close }')
+    .container(if='{ visible }')
         //- header.modal-header
         //-     button.close(onclick='{ close }')
         //-         | ×
         .modal-body
             //- yield
-            | By click `Proceed` this will charge you 1 eth to see the content
+            .spliter
+                .split
+                    h1
+                        | { info.name }
+                    | Entrance Fee(valid for one entry): { info.price } ETH
+                .split
+                    .thumb
+                        img(src='{ info.url }')
+            | By click `Enter`, Metamask will proceed the transaction with you, please wait until the transaction is confirmed.
+            | After the transaction is confirmed, it will bring you to the exhibition entrance.
         footer.modal-footer
-            button.ok(onclick='{ ok }')
-                | Proceed
+            button.ok(onclick='{ ok }' if='{ canEnter }')
+                | Enter
             button.cancel(onclick='{ close }')
-                | Cancel
+                | Close
     script.
-        import { reset, close } from './modal'
-        const tag = this
-        tag.modal = opts.modal
-        tag.on('mount', reset.bind(tag, tag.opts))
-        tag.close = close.bind(tag)
+        import { Modal } from './modal'
+        new Modal(this, opts)

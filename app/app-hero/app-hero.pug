@@ -5,3 +5,12 @@ app-hero
         | A conceptual crypto-token information exchange demo
     p
         | Click one of any artworks below to see more details
+    p.warn
+        | This is a site for demo purpose now, all ETH token transactions will
+        | running on test ethereum networks such as Rinkeby, Kovan, Ropsten networks.
+        | Besure you are using <b>Rinkeby</b> network to see how this would work.
+    p
+        | ETH will be sent to { config.cashierAddress }
+    script.
+        import { AppHero } from './app-hero'
+        new AppHero(this)
