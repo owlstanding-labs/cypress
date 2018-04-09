@@ -1,16 +1,12 @@
 app
     app-hero
     .items
-        .item(each='{ items }')
-            img(src='{ url }' onclick='{ showMod(name) }')
-            | { name }
-    modal(modal='{ mod }')
+        .item(each='{ item in items }')
+            img(src='{ item.url }' onclick='{ showMod(item) }')
+            | { item.name }
+    modal(ref='mod')
     script.
         import './lib/modal'
         import './app-hero'
-        import { w3cli, items, showMod } from './app'
-        const tag = this
-        tag.items = items
-        tag.mod = { visible: false }
-        tag.w3 = w3cli
-        tag.showMod = showMod.bind(tag)
+        import { App } from './app'
+        new App(this)
